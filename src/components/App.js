@@ -16,12 +16,15 @@ function App() {
 
 
   useEffect(() => {
+    if(!isNaN(date.getFullYear())) {
     axios.get(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()}`)
       .then(response => {
         //console.log(response.data);
-        setData(response.data);
+        if(response.data) setData(response.data);
       })
       .catch(err => console.log("Error:", err));
+
+    }
   }, [date]);
   
   useEffect(() => {
@@ -33,6 +36,9 @@ function App() {
       case "#apod":
         setCurPage(<Apod data = {data} today = {setDate} />);
         break;
+        case "#byDate":
+          setCurPage(<PhotoByDate data = {data} setDate = {setDate} />);
+          break;
       default:
         setCurPage(<Home />);
     }
@@ -42,7 +48,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header getAnchor = {setCurLocation}/>
+      <Header getAnchor = {setCurLocation} setData={setData} />
       <section className = "content">
         {/* <Apod data = {data} /> */}
         {curPage}

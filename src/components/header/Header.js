@@ -1,13 +1,19 @@
 import React from 'react';
 import logo from "../../assets/images/logo.png"
 
-const Header = ({ getAnchor }) => {
+const Header = ({ getAnchor, setData }) => {
 
     function changePage(e) {
+
         e.preventDefault();
+
+        if(!e.target.className.includes("selected")) {
+        
         getAnchor(e.target.name);
         document.querySelectorAll(".container header nav a").forEach(link => link.classList.remove("selected"));
         e.target.classList.add("selected");
+        setData();
+        }
     }
 
     return (

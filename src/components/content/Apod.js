@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Apod = ({ data, today }) => {
     //today(new Date());
@@ -6,6 +7,8 @@ const Apod = ({ data, today }) => {
     useEffect(() => {
         today(new Date());
     }, [today]);
+
+    if(!data) return <h2>Loading <FontAwesomeIcon icon="spinner" pulse /></h2>;
 
     return (
         <div className = "apod">
