@@ -80,8 +80,12 @@ header nav a {
   font-size: 1.4rem;
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 header nav a:hover {
+  color: white;
+}
+header nav .selected {
   color: white;
 }
 .container .content {
@@ -90,6 +94,14 @@ header nav a:hover {
   background: white;
   padding: 20px 50px;
 }
+.container .content .date_copyright {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flesx-start;
+  flex-wrap: nowrap;
+  width: 100%;
+}
 .container .content p {
   margin: 30px 0;
   line-height: 1.8;
@@ -97,6 +109,15 @@ header nav a:hover {
 .container .content img {
   width: 100%;
   height: 350px;
+}
+.container .content .attribution {
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 0.8rem;
+  margin-top: -15px;
+  padding: 0 10px;
+  z-index: 10;
 }
 .container footer {
   background: #B8D2FF;

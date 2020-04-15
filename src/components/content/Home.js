@@ -13,7 +13,7 @@ const Home = () => {
                 enter the date for the day you want to see and 'Voila!'. Just like
                 through time, you can see where you have been.
             </p>
-            <img src = {Spaceship} alt = "Spaceship" />
+            <img src = {Spaceship} alt = "By Justin Wei on Unsplash" /><span className = "attribution">Photo by Justin Wei on Unsplash</span>
         </div>
     );
 };
