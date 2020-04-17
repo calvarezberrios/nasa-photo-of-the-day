@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ContentCard from "./ContentCard";
 
 const Apod = ({ data, today }) => {
     //today(new Date());
@@ -12,14 +13,8 @@ const Apod = ({ data, today }) => {
 
     return (
         <div className = "apod">
-            <h2>{data.title}</h2>
-            <img src = {data.url} alt = "From NASA API" />
-            <div className="date_copyright">
-            <h4>Date: {data.date}</h4>
-            <h4>{data.copyright != null ? `By: ${data.copyright}` : ""}</h4>
-            </div>
-    
-            <p>{data.explanation}</p>
+            <h2 style = {{paddingLeft: "20px"}}>{data.title}</h2>
+            <ContentCard data = {data} />
             
         </div>
     );

@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import ContentCard from "./ContentCard";
+import styled from "styled-components";
 import $ from "jquery";
+
+const PhotoTitle = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    
+`;
 
 const PhotoByDate = ({ data, setDate}) => {
     const [imgDate, setImgDate] = useState();
@@ -36,7 +47,7 @@ const PhotoByDate = ({ data, setDate}) => {
     }
 
     if(!data) return (
-        <div className = "loading">
+        <div className = "loading" style = {{textAlign: "center"}}>
             <h2>Choose a Date: </h2>
             <input type = "date" className = "imgDate" onChange={changeImg} min = "1995-06-16" max = "2020-04-15" />
             <h2><FontAwesomeIcon icon = "spinner" pulse /></h2>
@@ -45,17 +56,11 @@ const PhotoByDate = ({ data, setDate}) => {
 
     return (
         <div className = "byDate">
-            <div className = "title_dateSelector">
+            <PhotoTitle className = "title_dateSelector">
                 <h2>{data.title}</h2>
                 <span>Choose a Date: <br /><input type = "date" className = "imgDate" onChange={changeImg} min = "1995-06-16" max = "2020-04-15" /></span>
-            </div>
-            <img src = {data.url} alt = "From NASA API" />
-            <div className="date_copyright">
-            <h4>Date: {data.date}</h4>
-            <h4>{data.copyright != null ? `By: ${data.copyright}` : ""}</h4>
-            </div>
-    
-            <p>{data.explanation}</p>
+            </PhotoTitle>
+            <ContentCard data = {data} />
             
         </div>
     );

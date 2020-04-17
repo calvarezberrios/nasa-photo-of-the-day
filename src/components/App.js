@@ -19,8 +19,8 @@ function App() {
     if(!isNaN(date.getFullYear())) {
     axios.get(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()}`)
       .then(response => {
-        //console.log(response.data);
-        if(response.data) setData(response.data);
+        console.log(response.data);
+        setData(response.data);
       })
       .catch(err => console.log("Error:", err));
 
